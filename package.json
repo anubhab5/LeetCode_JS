@@ -1,0 +1,22 @@
+{
+  "name": "leetcode-challange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "twoSum.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anubhab5/LeetCode_JS.git"
+  },
+  "author": "Anubhab Mukherjee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anubhab5/LeetCode_JS/issues"
+  },
+  "homepage": "https://github.com/anubhab5/LeetCode_JS#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
