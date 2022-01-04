@@ -43,12 +43,13 @@
  */
 
 /**
- * @param {string} s
- * @return {number}
+ * @param {string} s - the roman number
+ * @return {number} The numeric value
  */
 var romanToInt = function (s) {
+  // Final value to be returned.
   let numberInDecimal = 0;
-
+  // Map of Roman literal to decimal
   const romanNumerals = {
     I: 1,
     V: 5,
@@ -58,16 +59,20 @@ var romanToInt = function (s) {
     D: 500,
     M: 1000,
   };
-
+  // Function to add the roman literal to the till now sum 
   function add(romanValue) {
     numberInDecimal += romanNumerals[romanValue];
   }
 
   let romanNumberSplittedList = s.split("");
-
+  /**
+   * ### The Logic ###
+   * If the Second literal is smaller than the current one add the current one
+   * If Second number is larger than the current one then substract the current one from the next 
+   * and move the counter by 2
+   */
   for (let i = 0; i < romanNumberSplittedList.length; i++) {
     if (i + 1) {
-      debugger;
       if (romanNumerals[romanNumberSplittedList[i + 1]] < romanNumerals[romanNumberSplittedList[i]]) {
         add(romanNumberSplittedList[i]);
       } else if (romanNumerals[romanNumberSplittedList[i + 1]] > romanNumerals[romanNumberSplittedList[i]]) {
