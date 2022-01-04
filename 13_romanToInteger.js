@@ -46,4 +46,43 @@
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function (s) {};
+var romanToInt = function (s) {
+  let numberInDecimal = 0;
+
+  const romanNumerals = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  function add(romanValue) {
+    numberInDecimal += romanNumerals[romanValue];
+  }
+
+  let romanNumberSplittedList = s.split("");
+
+  for (let i = 0; i < romanNumberSplittedList.length; i++) {
+    if (i + 1) {
+      debugger;
+      if (romanNumerals[romanNumberSplittedList[i + 1]] < romanNumerals[romanNumberSplittedList[i]]) {
+        add(romanNumberSplittedList[i]);
+      } else if (romanNumerals[romanNumberSplittedList[i + 1]] > romanNumerals[romanNumberSplittedList[i]]) {
+        let intermediateDifference = romanNumerals[romanNumberSplittedList[i + 1]] -
+          romanNumerals[romanNumberSplittedList[i]];
+        numberInDecimal += intermediateDifference;
+        i++;
+      } else {
+        add(romanNumberSplittedList[i]);
+      }
+    } else {
+      add(romanNumberSplittedList[i]);
+    }
+  }
+  return numberInDecimal;
+};
+
+console.log(romanToInt("MCMXCIV"));
