@@ -27,3 +27,32 @@
     1 <= s.length <= 104
     s consists of parentheses only '()[]{}'.
  */
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    let processessedBracketList = [];
+
+    if (s.length % 2 !== 0) return false;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === '(' || s[i] === '{' || s[i] === '[') {
+            processessedBracketList.push(s[i]);
+        } else if ((s[i] === ')' && processessedBracketList[processessedBracketList.length - 1] === '(') ||
+            s[i] === '}' && processessedBracketList[processessedBracketList.length - 1] === '{' ||
+            s[i] === ']' && processessedBracketList[processessedBracketList.length - 1] === '[') {
+            processessedBracketList.pop();
+        } else {
+            return false;
+        }
+    }
+
+    if (!processessedBracketList.length) return true;
+    else return false;
+};
+
+s = "[({}]{}"
+
+console.log(isValid(s));
