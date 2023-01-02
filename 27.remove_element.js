@@ -49,11 +49,38 @@ Constraints:
 0 <= val <= 100
  */
 
-/**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
- */
-var removeElement = function (nums, val) {
 
+/**
+* @param {number[]} nums
+* @param {number} val
+* @return {number}
+*/
+var removeElement = function (nums, val) {
+    let firstPointer = 0;
+    let lastPointer = nums.length - 1;
+    let counter = 0;
+
+    while (firstPointer <= lastPointer) {
+        if (nums[lastPointer] === val) {
+            nums[lastPointer] = '_';
+            lastPointer--;
+            counter++;
+        } else if (nums[firstPointer] === val && nums[lastPointer] !== val) {
+            nums[firstPointer] = nums[lastPointer];
+            nums[lastPointer] = '_';
+            lastPointer--;
+            firstPointer++;
+            counter++;
+        } else if (nums[firstPointer] !== val && nums[lastPointer] !== val) {
+            firstPointer++;
+        } else if (nums[firstPointer] !== val && nums[lastPointer] === val) {
+            nums[lastPointer] = '_';
+            lastPointer--;
+            counter++;
+        }
+    }
+
+    return nums.length - counter;
 };
+
+console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2));
