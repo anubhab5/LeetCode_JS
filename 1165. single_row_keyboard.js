@@ -39,3 +39,19 @@ Acceptance Rate
 86.5%
  */
 
+/**
+ * @param {string} keyboard
+ * @param {string} word
+ * @return {number}
+ */
+var calculateTime = function (keyboard, word) {
+    let distance = 0;
+    let prevPos = 0;
+
+    for (let i = 0; i < word.length; i++) {
+        const index = keyboard.indexOf(word[i]);
+        distance += Math.abs(index - prevPos);
+        prevPos = index;
+    }
+    return distance;
+};
